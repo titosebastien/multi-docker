@@ -9,14 +9,14 @@ script:
     - docker run tito/react-test npm test -- --coverage
 
 after_success:
-    - docker build -t tito/multi-client ./client
-    - docker build -t tito/multi-nginx ./nginx
-    - docker build -t tito/multi-server ./server
-    - docker build -t tito/multi-worker ./worker
+    - docker build -t titosebastien/multi-client ./client
+    - docker build -t titosebastien/multi-nginx ./nginx
+    - docker build -t titosebastien/multi-server ./server
+    - docker build -t titosebastien/multi-worker ./worker
     # Log in to the docker CLI
     - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin docker.io
     # Take those images and push them to docker hub
-    - docker push tito/multi-client
-    - docker push tito/multi-nginx
-    - docker push tito/multi-server
-    - docker push tito/multi-worker
+    - docker push titosebastien/multi-client
+    - docker push titosebastien/multi-nginx
+    - docker push titosebastien/multi-server
+    - docker push titosebastien/multi-worker
